@@ -27,7 +27,7 @@ function eliminarConctacto() {
             SwalOverlayColor("verde");
             swal({
                 title: "Correcto",
-                text: "!Se a eliminado correctamente¡",
+                text: "¡Se a eliminado correctamente!",
                 icon: "success",
                 button: false,
                 timer: 1500,

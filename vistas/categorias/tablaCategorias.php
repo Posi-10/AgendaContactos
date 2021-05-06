@@ -29,7 +29,7 @@
                     <td><?php echo $mostrar['nombre']; ?></td>
                     <td><?php echo $mostrar['descripcion']; ?></td>
                     <td>
-                        <span class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#modalActualizarCategoria">
+                        <span onclick="obtenerDatosCategoria('<?php echo $id_categoria; ?>')" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#modalActualizarCategoria">
                             <span class="fas fa-edit"></span>
                         </span>
                     </td>

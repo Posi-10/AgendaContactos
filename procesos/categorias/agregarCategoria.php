@@ -4,6 +4,6 @@
         "nombreCategoria" => $_POST["nombreCategoria"],
         "descripcion" => $_POST["descripcion"]
     );
-    $Categorias = new Categorias;
+    $Categorias = new Categorias();
     echo $Categorias->agregarCategorias($datos);
 ?>
