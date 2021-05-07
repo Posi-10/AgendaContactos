@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <form id="frmAgregarContacto">
-            <div id="id_categorias"></div>
+            <div id="id_categoriasSelect"></div>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" class="form-control">
             <label for="apaterno">Apellido Paterno</label>
@@ -30,3 +30,8 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#id_categoriasSelect').load("vistas/contactos/selectCategorias.php");
+  });
+</script>
