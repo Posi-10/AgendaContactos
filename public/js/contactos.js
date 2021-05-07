@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    $('#cargaTablaContactos').load('vistas/contactos/tablaContactos.php')
+    $('#cargaTablaContactos').load('vistas/contactos/tablaContactos.php');
+    $('#btnAgregarContacto').click(function() {
+        agregarContacto();
+    })
 });
 
 const SwalColors = {
@@ -12,6 +15,38 @@ function SwalOverlayColor(color) {
     setTimeout(function() {
         $(".swal-overlay").css({ "background-color": SwalColors[color] });
     }, 10);
+}
+
+function agregarContacto() {
+    $.ajax({
+        type: "POST",
+        url: "procesos/contactos/agregarContacto.php",
+        data: $('#frmAgregarContacto').serialize(),
+        success: function(r) {
+            r = r.trim();
+            if (r == 1) {
+                $('#frmAgregarContacto')[0].reset();
+                $("#cargaTablaContactos").load('vistas/contactos/tablaContactos.php');
+                SwalOverlayColor("verde");
+                swal({
+                    title: "Correcto",
+                    text: "¡Se agrego con exito!",
+                    icon: "success",
+                    button: false,
+                    timer: 1500,
+                });
+            } else {
+                SwalOverlayColor("rojo");
+                swal({
+                    title: "Error",
+                    text: "¡Error al agregar!",
+                    icon: "error",
+                    button: false,
+                    timer: 1500,
+                });
+            }
+        }
+    });
 }
 
 function eliminarConctacto() {

@@ -27,8 +27,8 @@ function agregarCategoria() {
         success: (r) => {
             r = r.trim();
             if (r == 1) {
-                $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
                 $('#frmAgregarCategoria')[0].reset();
+                $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
                 SwalOverlayColor("verde");
                 swal({
                     title: "Correcto",
