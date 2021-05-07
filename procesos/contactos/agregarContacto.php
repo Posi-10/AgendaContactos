@@ -8,5 +8,5 @@
                 "telefono" => $_POST['telefono'], 
                 "email" => $_POST['email']
      );
-     echo $Contactos -> agregarContacto($datos);
+     echo $Contactos->agregarContacto($datos);
 ?>

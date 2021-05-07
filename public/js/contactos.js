@@ -49,7 +49,7 @@ function agregarContacto() {
     });
 }
 
-function eliminarConctacto() {
+function eliminarConctacto(id_agenda) {
     SwalOverlayColor("amarillo");
     swal({
         title: "Alvertencia",
@@ -59,13 +59,33 @@ function eliminarConctacto() {
         dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
-            SwalOverlayColor("verde");
-            swal({
-                title: "Correcto",
-                text: "¡Se a eliminado correctamente!",
-                icon: "success",
-                button: false,
-                timer: 1500,
+            $.ajax({
+                type: "POST",
+                data: "id_agenda=" + id_agenda,
+                url: "procesos/contactos/eliminarContacto.php",
+                success: (r) => {
+                    r = r.trim();
+                    if (r == 1) {
+                        $("#cargaTablaContactos").load('vistas/contactos/tablaContactos.php');
+                        SwalOverlayColor("verde");
+                        swal({
+                            title: "Correcto",
+                            text: "¡Se elimino con exito!",
+                            icon: "success",
+                            button: false,
+                            timer: 1500,
+                        });
+                    } else {
+                        SwalOverlayColor("rojo");
+                        swal({
+                            title: "Error",
+                            text: "¡Error al eliminar!",
+                            icon: "error",
+                            button: false,
+                            timer: 1500,
+                        });
+                    }
+                }
             });
         }
     });
