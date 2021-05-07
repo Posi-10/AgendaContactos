@@ -11,6 +11,7 @@
       <div class="modal-body">
         <form id="frmActualizarContacto">
             <div id="id_categoriasU"></div>
+            <input type="text" id="id_agendaU" name="id_agendaU" hidden>
             <label for="nombreU">Nombre</label>
             <input type="text" id="nombreU" name="nombreU" class="form-control">
             <label for="apaternoU">Apellido Paterno</label>
@@ -25,7 +26,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-success" id="btnActualizarContacto">Guardar</button>
       </div>
     </div>
   </div>

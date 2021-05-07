@@ -1,7 +1,7 @@
 <?php 
 	require_once "../../clases/Conexion.php";
-	$con = new Conexion();
-	$conexion = $con->conectar();
+	$conexion = new Conexion();
+	$conexion = $conexion->conectar();
 	$sql = "SELECT id_categoria,
 					nombre 
 			FROM t_categorias 

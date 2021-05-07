@@ -1,8 +1,11 @@
-$(document).ready(function() {
+$(document).ready(() => {
     $('#cargaTablaContactos').load('vistas/contactos/tablaContactos.php');
-    $('#btnAgregarContacto').click(function() {
+    $('#btnAgregarContacto').click(() => {
         agregarContacto();
-    })
+    });
+    $('#btnActualizarContacto').click(() => {
+        actualizarContacto();
+    });
 });
 
 const SwalColors = {
@@ -12,7 +15,7 @@ const SwalColors = {
 };
 
 function SwalOverlayColor(color) {
-    setTimeout(function() {
+    setTimeout(() => {
         $(".swal-overlay").css({ "background-color": SwalColors[color] });
     }, 10);
 }
@@ -22,7 +25,7 @@ function agregarContacto() {
         type: "POST",
         url: "procesos/contactos/agregarContacto.php",
         data: $('#frmAgregarContacto').serialize(),
-        success: function(r) {
+        success: (r) => {
             r = r.trim();
             if (r == 1) {
                 $('#frmAgregarContacto')[0].reset();
@@ -40,6 +43,38 @@ function agregarContacto() {
                 swal({
                     title: "Error",
                     text: "¡Error al agregar!",
+                    icon: "error",
+                    button: false,
+                    timer: 1500,
+                });
+            }
+        }
+    });
+}
+
+function actualizarContacto() {
+    $.ajax({
+        type: "POST",
+        url: "procesos/contactos/actualizarContactos.php",
+        data: $('#frmActualizarContacto').serialize(),
+        success: (r) => {
+            r = r.trim();
+            if (r == 1) {
+                $('#cargaTablaContactos').load('vistas/contactos/tablaContactos.php');
+                $('#modalActualizarContacto').modal("toggle");
+                SwalOverlayColor("verde");
+                swal({
+                    title: "Correcto",
+                    text: "¡Se actualizo con exito!",
+                    icon: "success",
+                    button: false,
+                    timer: 1500,
+                });
+            } else {
+                SwalOverlayColor("rojo");
+                swal({
+                    title: "Error",
+                    text: "¡Error al actualizar!",
                     icon: "error",
                     button: false,
                     timer: 1500,
@@ -87,6 +122,25 @@ function eliminarConctacto(id_agenda) {
                     }
                 }
             });
+        }
+    });
+}
+
+function obtenerDatosContacto(id_agenda) {
+    $.ajax({
+        type: "POST",
+        data: "id_agenda=" + id_agenda,
+        url: "procesos/contactos/obtenerDatosContacto.php",
+        success: (r) => {
+            r = jQuery.parseJSON(r);
+            id_categoria = r['id_categoria'];
+            $('#nombreU').val(r['nombre']);
+            $('#apaternoU').val(r['paterno']);
+            $('#amaternoU').val(r['materno']);
+            $('#telefonoU').val(r['telefono']);
+            $('#emailU').val(r['email']);
+            $('#id_agendaU').val(r['id_agenda']);
+            $('#id_categoriasU').load("vistas/contactos/selectCategoriasUpdate.php?id_categoria=" + id_categoria);
         }
     });
 }

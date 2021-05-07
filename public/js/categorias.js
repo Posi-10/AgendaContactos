@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(() => {
     $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
-    $('#btnGuardarCategoria').click(function() {
+    $('#btnGuardarCategoria').click(() => {
         agregarCategoria();
     });
-    $('#btnActualizarCategoria').click(function() {
+    $('#btnActualizarCategoria').click(() => {
         actualizarCategoria();
     });
 });
@@ -14,7 +14,7 @@ const SwalColors = {
 };
 
 function SwalOverlayColor(color) {
-    setTimeout(function() {
+    setTimeout(() => {
         $(".swal-overlay").css({ "background-color": SwalColors[color] });
     }, 10);
 }
@@ -97,7 +97,7 @@ function obtenerDatosCategoria(id_categoria) {
         type: "POST",
         data: "id_categoria=" + id_categoria,
         url: "procesos/categorias/obtenerDatosCategoria.php",
-        success: function(r) {
+        success: (r) => {
             r = jQuery.parseJSON(r);
             $('#id_categoria').val(r['id_categoria']);
             $('#nombreCategoriaU').val(r['nombre']);
@@ -115,6 +115,7 @@ function actualizarCategoria() {
             r = r.trim();
             if (r == 1) {
                 $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+                $('#modalActualizarCategoria').modal("toggle");
                 SwalOverlayColor("verde");
                 swal({
                     title: "Correcto",
