@@ -1,9 +1,51 @@
 $(document).ready(() => {
     $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
     $('#btnGuardarCategoria').click(() => {
+        if ($('#nombreCategoria').val() == "" || $('#nombreCategoria').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Nombre`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#descripcion').val() == "" || $('#descripcion').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Descripcion`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        }
         agregarCategoria();
     });
     $('#btnActualizarCategoria').click(() => {
+        if ($('#nombreCategoriaU').val() == "" || $('#nombreCategoriaU').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Nombre`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#descripcionU').val() == "" || $('#descripcionU').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Descripcion`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        }
         actualizarCategoria();
     });
 });

@@ -1,9 +1,91 @@
 $(document).ready(() => {
     $('#cargaTablaContactos').load('vistas/contactos/tablaContactos.php');
     $('#btnAgregarContacto').click(() => {
+        if ($('#id_categoriaSelect').val() == 0) {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Categoria`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#nombre').val() == "" || $('#nombre').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Nombre`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#apaterno').val() == "" || $('#apaterno').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Apellido Paterno`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#amaterno').val() == "" || $('#amaterno').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Apellido Materno`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        }
         agregarContacto();
     });
     $('#btnActualizarContacto').click(() => {
+        if ($('#id_categoriaSelectU').val() == 0) {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Categoria`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#nombreU').val() == "" || $('#nombreU').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Nombre`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#apaternoU').val() == "" || $('#apaternoU').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Apellido Paterno`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        } else if ($('#amaternoU').val() == "" || $('#amaternoU').val() == " ") {
+            SwalOverlayColor("amarillo");
+            swal({
+                title: "Alvertencia",
+                text: `No haz colocado nada en Apellido Materno`,
+                icon: "warning",
+                button: false,
+                timer: 1500,
+            });
+            return false;
+        }
         actualizarContacto();
     });
 });

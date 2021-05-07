@@ -11,7 +11,7 @@
  ?>
  	<label for="id_categoriaSelectU">Selecciona una categoria</label>
  	<select id="id_categoriaSelectU" name="id_categoriaSelectU" class="form-control">
- 		<option selected>Seleccionar categoria</option>
+ 		<option value="0">Seleccionar categoria</option>
  	<?php
 		while($ver = mysqli_fetch_row($r)):
 			if($ver[0] == $id_categoria){

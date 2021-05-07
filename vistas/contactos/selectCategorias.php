@@ -10,7 +10,7 @@
  ?>
  	<label for="id_categoriaSelect">Selecciona una categoria</label>
  	<select id="id_categoriaSelect" name="id_categoriaSelect" class="form-control">
- 		<option selected>Seleccionar categoria</option>
+ 		<option value="0">Seleccionar categoria</option>
  	<?php while($ver = mysqli_fetch_row($r)): ?>
  		<option value="<?php echo $ver[0] ?>"><?php echo $ver[1]; ?></option>
  	<?php endwhile; ?>
